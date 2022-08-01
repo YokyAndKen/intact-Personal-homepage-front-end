@@ -12,7 +12,7 @@
           </div>
 
         <div class="showCard" >
-          <div class="card_self" v-for="item in 3">
+          <div class="card_self" v-for="item in 4">
               <div class="card_img">
                 <img src="@/assets/card_img.png" alt="">
               </div>
@@ -110,15 +110,16 @@ const currentDate = ref(new Date())
   .showCard {
     width: 1000px;
     /* border: 1px solid red; */
-    margin-top: 20px;
+    /* margin-top: 10px; */
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     justify-content: space-between;
   }
   .card_self {
     width:300px;
     border: 1px solid yellowgreen;
     height: 400px;
+    margin-top: 30px;
     box-shadow: #ccc 0px 0px 10px;
   }
   .card_img {
