@@ -44,7 +44,7 @@
     justify-content: center;
     width: 100%;
     height: 180px;
-    background: #3483FF;
+    background: rgba(0, 0, 0, 0.8);
   }
   .left_img img {
     width: 120px;

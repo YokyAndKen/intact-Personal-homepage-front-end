@@ -29,7 +29,7 @@
               </div>
             </div>
             <div class="pop_bottom">
-
+              
             </div>
           </div>
         </ul>
@@ -116,7 +116,7 @@ onBeforeMount (() => {
 
 <style scoped>
   .nav_swiper {
-    background: url('@/assets/transitionbg.png') no-repeat;
+    background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0));
     width: 100vw;
     height: 600px;
     margin: 0 auto;
@@ -164,15 +164,15 @@ onBeforeMount (() => {
     background: linear-gradient(
       90deg,
       /* #0a1627 0%, */
-      #3585FF 0%,
-      #2B283D 90%
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.1) 90%
     );
     border: 1px solid;
     border-image: linear-gradient(
         90deg,
         rgba(23, 193, 212, 0),
-        rgb(23, 193, 212),
-        rgb(23, 193, 212),
+        #626aef,
+        #626aef,
         rgba(23, 193, 212, 0)
       )
       1 1;
@@ -232,12 +232,14 @@ onBeforeMount (() => {
   z-index: 99;
   width: 725px;
   height: 370px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.7);
   /* background: red; */
+  /* background: rgba(0, 0, 0, 0.8); */
   border-radius: 0 11px 0 0;
 }
 .pop_top {
   padding: 23px 30px;
+  border: 1px solid yellowgreen;
 }
 .pop_top>div {
   display: flex;
@@ -252,7 +254,7 @@ onBeforeMount (() => {
   margin-left: 20px;
 }
 .pop_top>div ul li:hover {
-  color: #3585FF;
+  color: #626aef;
   cursor: pointer;
 }
 </style>

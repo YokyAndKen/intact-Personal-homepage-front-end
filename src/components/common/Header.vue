@@ -76,7 +76,7 @@
   }
   .active {
     position: relative;
-    color: #3585FF !important;
+    color: #626aef !important;
     font-family: MicrosoftYaHei-Bold;
   }
   .active::after {
@@ -87,7 +87,7 @@
     width: 140%;
     height: 3px;
     margin-left: -22%;
-    background: #3585FF;
+    background: #626aef;
   }
   .header_r{
     display: flex;
