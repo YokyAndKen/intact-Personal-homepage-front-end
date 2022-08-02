@@ -24,7 +24,9 @@
               </div>
               <div class="card_tag">
                 <el-tag>大学</el-tag>
+                <el-button type="primary" size="small" color="#626aef" round>查看详情</el-button>
               </div>
+              
           </div>
         </div>
       </div>
@@ -33,7 +35,22 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { onBeforeMount, ref } from 'vue'
+import { mostNew } from '@/api/course.js'
+
+//混入mixin
+import courseType from '@/mixins/courseType.js'
+let { courseTypeFn } = courseType()
+
+//生命周期获取数据
+onBeforeMount(() => {
+  mostNew({
+    pageNum:1,
+    pageSize:8
+  }).then(res => {
+    console.log(res)
+  })
+})
 
 const currentDate = ref(new Date())
 </script>
@@ -117,7 +134,7 @@ const currentDate = ref(new Date())
   }
   .card_self {
     width:300px;
-    border: 1px solid yellowgreen;
+    /* border: 1px solid yellowgreen; */
     height: 400px;
     margin-top: 30px;
     box-shadow: #ccc 0px 0px 10px;
@@ -143,6 +160,9 @@ const currentDate = ref(new Date())
   }
   .card_tag {
     margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
     padding-left: 15px;
+    padding-right: 15px;
   }
 </style>
