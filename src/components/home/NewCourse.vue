@@ -12,7 +12,7 @@
           </div>
 
         <div class="showCard" >
-          <div class="card_self" v-for="item in 4">
+          <div class="card_self" v-for="item in 4" @click='goDetail(item.id)'>
               <div class="card_img">
                 <img src="@/assets/card_img.png" alt="">
               </div>
@@ -41,6 +41,7 @@ import { mostNew } from '@/api/course.js'
 //混入mixin
 import courseType from '@/mixins/courseType.js'
 let { courseTypeFn } = courseType()
+let router = useRouter()
 
 //生命周期获取数据
 onBeforeMount(() => {
@@ -52,6 +53,17 @@ onBeforeMount(() => {
   })
 })
 
+
+//进入课程详情页
+const goDetail = (id) => {
+  router.push({
+    path: '/detail',
+    query: {
+      // 这里带参的value值要用字符串形式，不能用number类型
+      id: '9515f28152db46cab430d17e7b061e54'
+    }
+  })
+}
 const currentDate = ref(new Date())
 </script>
 

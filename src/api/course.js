@@ -32,3 +32,11 @@ export function courseSearch ( data ) {
     data
   })
 }
+
+//根据id查询课程详情
+export function getDetail ( params ) {
+  return request({
+    url: '/api/course/getDetail',
+    params
+  })
+}

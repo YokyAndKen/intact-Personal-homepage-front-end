@@ -36,9 +36,8 @@
         </ul>
         <div class="carousel_img">
           <el-carousel :interval="3000" arrow="always" height="370px" v-if="state.sliderImgList.length > 0">
-            <el-carousel-item v-for="item in state.sliderImgList" :key="item.id">
-              <img :src="item.imageUrl">
-              <!-- <img src="@/assets/scroll_2.png"> -->
+            <el-carousel-item v-for="item in state.imgList" :key="item.name ">
+              <img :src="item.src">
             </el-carousel-item>
           </el-carousel>
         </div>
@@ -99,12 +98,39 @@ import { ArrowRight } from '@element-plus/icons-vue'
 import { getSliders } from '@/api/slider.js'
 import { getFirstCategorys, getSecondCategorys } from '@/api/course.js'
 import { reactive } from '@vue/reactivity'
-// import {getAssetsFile} from '@/utils/getImgMethods.js'
+import useUtil from '@/utils/getImgMethods.js';
+// import { getAssetsFile } from '@/utils/getImgMethods.js'
 
 const state = reactive({
   sliderImgList: [],
   firstCategoryList: [],  // 一级分类数据
   isShowPop: false,
+  imgList: [
+    {
+      name: "scroll_1",
+      src: useUtil.getAssetsFile('scroll_1.png'),
+    },
+    {
+      name: "scroll_2",
+      src: useUtil.getAssetsFile('scroll_2.png'),
+    },
+    {
+      name: "scroll_3",
+      src: useUtil.getAssetsFile('scroll_3.png'),
+    },
+    {
+      name: "scroll_4",
+      src: useUtil.getAssetsFile('scroll_4.png'),
+    },
+    {
+      name: "scroll_5",
+      src: useUtil.getAssetsFile('scroll_5.png'),
+    },
+    {
+      name: "scroll_6",
+      src: useUtil.getAssetsFile('scroll_6.png'),
+    },
+  ]
 })
 
 //生命周期

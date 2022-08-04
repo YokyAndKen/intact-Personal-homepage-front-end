@@ -70,6 +70,7 @@
 				<li
 					v-for='item in courseList'
 					:key='item.id'
+          @click='goDetail(item.id)'
 				>
 					<img :src="item.courseCover" />
 					<div class='course-content'>
@@ -259,6 +260,19 @@ let tabCourse = ( val )=>{
 const currentChange = (val) => {
   courseParams.pageNum = val;
   getCourseSearch(courseParams);
+}
+
+
+let router = useRouter()
+//跳转到课程详情页
+const goDetail = (id)=>{
+  // alert("id")
+  router.push({
+    path:'/detail',
+    query:{
+      id:id
+    }
+  })
 }
 </script>
 

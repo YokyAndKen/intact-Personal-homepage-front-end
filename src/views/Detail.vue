@@ -1,88 +1,62 @@
 <template>
 	<Header></Header>
+  <!-- 头部带背景标题 -->
 	<div class='detail-title'>
 		<div class='detail-main'>
 			<div class='detail-map'>
 				 <el-breadcrumb :separator-icon="ArrowRight">
 			    <el-breadcrumb-item>课程</el-breadcrumb-item>
 			    <el-breadcrumb-item>免费课</el-breadcrumb-item>
-			    <el-breadcrumb-item>2021Android从零入门到实战</el-breadcrumb-item>
+			    <el-breadcrumb-item>{{ detail.courseName }}</el-breadcrumb-item>
 			  </el-breadcrumb>
 			</div>
-			<div class='detail-name'>2021Android从零入门到实战</div>
+			<div class='detail-name'>{{ detail.courseName }}</div>
 			<div class='detail-content'>难度 入门</div>
 		</div>
 	</div>
+  <!-- 主要内容 -->
 	<div class='detail-container'>
+    <!-- 切换模块栏 -->
 		<div class='tab-name'>
 			<ul>
-				<li class='active'>章节</li>
-				<li>下载笔记代码</li>
+				<li 
+					@click='isActive=1'	
+					:class=' isActive==1 ? "active":"" ' 
+				>章节</li>
+				<li 
+					@click='isActive=2'
+					:class=' isActive==2 ? "active":"" ' 
+				>下载笔记代码</li>
 			</ul>
 		</div>
-		<div class='tab-chapters'>
+    <!-- 课程介绍 -->
+		<div class='tab-chapters' v-if='isActive==1'>
 			<div class='tab-txt'>
-				<div class='txt-content'>简介：全面系统地介绍国有资产管理的基本理论、基本知识、基本方法和我国现行国有资产管理方面的政策与制度，努力反映我国国有资产管理体制改革的最新成果和国内外国有资产。    
+				<div class='txt-content'>{{ detail.bizCourseDetail ? detail.bizCourseDetail :'暂无课程介绍...' }}    
 				</div>
 				<div class='txt-btn'>
 					<div class='payment'>立即购买</div>
 					<div class='add-cart'>加入购物车</div>
 				</div>
 			</div>
+      <!-- 课程详细章节 -->
 			<div class='detail-list'>
-				<div class='item'>
+				<div class='item' 
+					v-for='item in bizCourseChapters'
+					:key='item.id'
+				>
 					<div class='item-title'>
-						<div class='item-name'>第1章 开发语言内容各有不同</div>
-						<div class='item-key'>从零开始完整的讲解了力推且备受万千开发者喜爱的语言</div>
+						<div class='item-name'>{{ item.chapterName }}</div>
+						<div class='item-key'>{{ item.description }}</div>
 					</div>
 					<ul>
-						<li>
+						<li
+							v-for='k in item.children'
+							:key='k.id'
+						>
 							<div class='course'>
 								<img src="@/assets/detail-video.png" />
-								<div>视频：1-1开发语言必会知识（10:44）</div>
-							</div>
-							<div class='course-video'>开始学习</div>
-						</li>
-						<li>
-							<div class='course'>
-								<img src="@/assets/detail-video.png" />
-								<div>视频：1-1开发语言必会知识（10:44）</div>
-							</div>
-							<div class='course-video'>开始学习</div>
-						</li>
-						<li>
-							<div class='course'>
-								<img src="@/assets/detail-video.png" />
-								<div>视频：1-1开发语言必会知识（10:44）</div>
-							</div>
-							<div class='course-video'>开始学习</div>
-						</li>
-						<li>
-							<div class='course'>
-								<img src="@/assets/detail-video.png" />
-								<div>视频：1-1开发语言必会知识（10:44）</div>
-							</div>
-							<div class='course-video'>开始学习</div>
-						</li>
-					</ul>
-				</div>
-				<div class='item'>
-					<div class='item-title'>
-						<div class='item-name'>第1章 开发语言内容各有不同</div>
-						<div class='item-key'>从零开始完整的讲解了力推且备受万千开发者喜爱的语言</div>
-					</div>
-					<ul>
-						<li>
-							<div class='course'>
-								<img src="@/assets/detail-video.png" />
-								<div>视频：1-1开发语言必会知识（10:44）</div>
-							</div>
-							<div class='course-video'>开始学习</div>
-						</li>
-						<li>
-							<div class='course'>
-								<img src="@/assets/detail-video.png" />
-								<div>视频：1-1开发语言必会知识（10:44）</div>
+								<div>视频：{{ k.chapterName }}</div>
 							</div>
 							<div class='course-video'>开始学习</div>
 						</li>
@@ -90,7 +64,17 @@
 				</div>
 			</div>
 		</div>
-		<!-- <div class='tab-main'></div> -->
+		<div class='tab-main' v-if='isActive==2'>
+			<ul>
+				<li
+					v-for='item in bizCourseAttachments'
+					:key='item.id'
+				>
+					<div>{{ item.attachmentName }}</div>
+					<div class='download'>下载资料</div>
+				</li>
+			</ul>
+		</div>
 	</div>
 	<Footer></Footer>
 </template>
@@ -101,6 +85,36 @@ import Header from '@/components/common/Header.vue'
 import Footer from '@/components/common/Footer.vue'
 //element
 import { ArrowRight } from '@element-plus/icons-vue'
+//api
+import { getDetail } from '@/api/course.js'
+//路由
+let route = useRoute();
+
+//章节 和 下载笔记代码切换数据
+let isActive = ref(1);
+
+//课程详情数据
+let detail = reactive({
+	courseName:''
+})
+//课程章节
+let bizCourseChapters = ref([]);
+//课程资料
+let bizCourseAttachments = ref([]);
+
+//生命周期
+onBeforeMount(()=>{
+	getDetail({
+		courseId:route.query.id
+	}).then(res=>{
+		let data = res.data.data;
+		detail.courseName = data.courseName;
+		detail.bizCourseDetail = data.bizCourseDetail.description;
+		bizCourseChapters.value = data.bizCourseChapters;
+		bizCourseAttachments.value = data.bizCourseAttachments;
+		console.log( data.bizCourseAttachments )
+	})
+})
 </script>
 
 <style scoped>
@@ -151,8 +165,7 @@ import { ArrowRight } from '@element-plus/icons-vue'
 	width: 1000px;
 	margin: 0 auto;
 	font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 2px;
+	cursor: pointer;
 }
 .tab-name ul li + li{
 	margin-left: 67px;
@@ -238,9 +251,6 @@ import { ArrowRight } from '@element-plus/icons-vue'
 	font-weight: 400;
 	color: #5C5C5C;
 }
-.item ul{
-
-}
 .item ul li{
 	display: flex;
 	justify-content: space-between;
@@ -270,5 +280,34 @@ import { ArrowRight } from '@element-plus/icons-vue'
 	line-height:20px;
 	background: #388FFF;
 	border-radius: 8px;
+}
+.tab-main{
+	width: 1000px;
+	margin: 0 auto;
+}
+.tab-main ul{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+.tab-main ul li{
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	margin: 10px 0;
+	line-height: 35px;
+	font-size: 14px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px rgb(0 0 0 / 9%);
+}
+.download{
+	width: 100px;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    background-color: #007bff;
 }
 </style>

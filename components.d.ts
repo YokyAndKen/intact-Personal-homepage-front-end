@@ -15,7 +15,10 @@ declare module '@vue/runtime-core' {
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElCol: typeof import('element-plus/es')['ElCol']
+    ElForm: typeof import('element-plus/es')['ElForm']
+    ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElInput: typeof import('element-plus/es')['ElInput']
     ElPagination: typeof import('element-plus/es')['ElPagination']
     ElRadio: typeof import('element-plus/es')['ElRadio']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
@@ -28,5 +31,8 @@ declare module '@vue/runtime-core' {
     NewCourse: typeof import('./src/components/home/NewCourse.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Verify: typeof import('./src/components/verifition/Verify.vue')['default']
+    VerifyPoints: typeof import('./src/components/verifition/Verify/VerifyPoints.vue')['default']
+    VerifySlide: typeof import('./src/components/verifition/Verify/VerifySlide.vue')['default']
   }
 }

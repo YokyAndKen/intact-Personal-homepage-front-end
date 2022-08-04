@@ -19,6 +19,9 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver()],
     }),
+    // requireTransform({
+    //   fileRegex: /.js$|.vue$/
+    // }),
 ],
   resolve: {
     // 配置路径别名
