@@ -242,11 +242,6 @@ section{
     display: flex;
     /* box-shadow: 0px 0px 5px #777; */
 }
-.login-left{
-    width: 475px;
-    height: 500px;
-    background: #388fff;
-}
 .login-right{
     position: relative;
     width: 350px;
@@ -255,53 +250,6 @@ section{
     margin-left: 80px;
     padding: 0 15px;
     background: rgba(255, 255, 255, 0.2);
-}
-.nav-tabs {
-    border-bottom: none;
-}
-.login-form{
-    padding: 10px 40px;
-    width: 350px;
-    height: 440px;
-    /* background: #ffffff; */
-    /* box-shadow: 0 0 8px #cccccc; */
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-}
-.nav-tabs{
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-}
-.nav-tabs li{
-    width: 40%;
-    padding: 0px 0;
-    font-size: 17px;
-    font-weight: bold;
-}
-.nav-tabs li a{
-    color: #333;
-    display: block;
-    height: 45px;
-    line-height: 45px;
-}
-.actives{
-    color: #388eff;
-    border-bottom: 4px solid #388eff;
-}
-.activess{
-    color: #388eff !important;
-}
-.nav-tabs li a:hover{
-    text-decoration: none;
-}
-.tab-main{
-    /* height: 360px; */
-    padding: 1px 0 0 0;
 }
 .login-user{
     width: 100%;
@@ -347,27 +295,6 @@ section{
     border: 0;
     padding: 0 5px;
 }
-.login-Verification{
-    width: 100%;
-    height: 40px;
-    margin-top: 30px;
-    border-bottom: 1px solid #666;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.login-Verification .captcha{
-    width: 130px;
-    height: 35px;
-    outline: none;
-    color: #666666;
-    border: none;
-}
-.login-Verification .sendcaptcha{
-    padding: 5px 10px;
-    font-size: 14px;
-    border-radius: 20px;
-}
 .login-submit{
     width: 100%;
     height: 40px;
@@ -385,121 +312,10 @@ section{
     font-weight: bold;
     margin-bottom: 5px;
 }
-.forgetpwd{
-    float: right;
-    color: #888;
-}
-.login-text{
-    width: 100%;
-    margin-top: 50px;
-    color: #666;
-    text-align: justify;
-}
-.login-left{
-    padding: 20px;
-}
-.login-left .logo img{
-    width: 120px;
-}
-.left-qrcode{
-    width: 200px;
-    margin: 30px auto 0 auto;
-}
-.left-qrcode #qrcode{
-    width: 200px;
-    height: 200px;
-    padding: 10px;
-    background: #ffffff;
-}
-.left-qrcode #qrcode img{
-    width: 100% !important;
-    height: 100% !important;
-}
-.login-left .qrcode-text{
-    text-align: center;
-    color: white;
-    line-height: 35px;
-    margin-top: 10px;
-}
-.quick-login{
-    text-align: center;
-    margin: 20px 0;
-    color: #dddddd;
-    position: relative;
-}
-.quick-login:before{
-    content: '';
-    width: 80px;
-    height: 1px;
-    background: #dddddd;
-    position: absolute;
-    left: 100px;
-    top: 50%;
-}
-.quick-login:after{
-    content: '';
-    width: 80px;
-    height: 1px;
-    background: #dddddd;
-    position: absolute;
-    right: 100px;
-    top: 50%;
-}
-.qq-wx-wb{
-    width: 180px;
-    height: 55px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-}
-.qq-wx-wb .qq-login{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    overflow: hidden;
-    font-size: 18px;
-    text-align: center;
-    line-height: 30px;
-    background: #e5ffe1;
-}
-.qq-wx-wb .qq-login a{
-    color:  #368afe;
-}
-.qq-wx-wb .wx-login{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    overflow: hidden;
-    font-size: 18px;
-    text-align: center;
-    line-height: 30px;
-    background: #e5ffe1;
-}
-.qq-wx-wb .wx-login a{
-    color: #09bb07;
-}
-.qq-wx-wb .weibo-login{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    overflow: hidden;
-    font-size: 18px;
-    text-align: center;
-    line-height: 30px;
-    background: #e5ffe1;
-}
-.qq-wx-wb .weibo-login a{
-    color: #d81e06;
-}
 :deep .el-form-item__content{
 	flex-wrap: nowrap;
-  
 }
 :deep .el-input__wrapper {
-  /* border: none !important; */
-
   background: transparent;
   box-shadow: none !important;
 }
@@ -507,9 +323,6 @@ section{
   border: none !important;
   /* color: red !important; */
   box-shadow: none !important;
-}
-:deep .el-select {
-  --el-select-input-focus-border-color: transparent;
 }
 :deep .el-form-item__error{
 	top: 120%;

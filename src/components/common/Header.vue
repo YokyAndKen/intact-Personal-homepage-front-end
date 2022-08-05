@@ -26,7 +26,7 @@
 					<router-link to='/login'>登录/注册</router-link>
 				</div>
 				<div class="content-login-success" v-else>
-				    <div style="cursor: pointer">我的课程</div>
+				    <div style="cursor: pointer" @click="toCourse" class="my_course">我的课程</div>
 				    <div @mouseenter='isShow=true'>
 				      <!-- <img
 				        class="avator"
@@ -205,6 +205,11 @@ const outLogin = () => {
       type: 'success',
   })
 }
+
+//点击“我的课程”进行路由跳转
+const toCourse = () => {
+  router.push('/course')
+}
 </script>
 
 <style scoped>
@@ -232,28 +237,6 @@ header{
 }
 .content-logo img{
 	height: 100%;
-}
-.content-nav{
-	width: 300px;
-	height: 75px;
-}
-.content-nav ul{
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	width: 100%;
-	height: 75px;
-}
-.content-nav ul li{
-	font-size:18px;
-	color:#808080;
-	cursor: pointer;
-}
-.content-nav ul li a{
-	font-size:18px;
-	color:#808080;
-	cursor: pointer;
-	text-decoration: none;
 }
 .search-buy-login{
 	display: flex;
@@ -474,6 +457,14 @@ header{
 .header-content ul li + li{
 	margin-left: 79px;
 	font-size: 16px;
+}
+.my_course:hover{
+  color: #626aef;
+  font-weight: 600;
+}
+.my_course {
+  font-size: 16px;
+  margin-left: 10px;
 }
 
 </style>

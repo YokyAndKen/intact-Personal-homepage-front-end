@@ -2,7 +2,7 @@
   <footer>
     <div class="left_img">
       <img src="@/assets/footer.jpg">
-      <img src="@/assets/foot-factory.png" style="margin-left: 40px;">
+      <img src="@/assets/hh.jpg" style="margin-left: 40px;">
     </div>
     <div class="center">
       <ul>
