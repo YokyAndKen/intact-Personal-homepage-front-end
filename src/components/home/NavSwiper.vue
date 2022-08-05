@@ -137,14 +137,11 @@ const state = reactive({
 onBeforeMount (() => {
   //轮播图数据
   getSliders().then(res=>{
-    console.log(res)
     state.sliderImgList = res.data.list
-    console.log('轮播图列表',state.sliderImgList)
   })
 
   //一级分类请求数据
   getFirstCategorys().then(res => {
-    console.log(res.data.list)
     state.firstCategoryList.push(res.data.list[0])
     state.firstCategoryList.push(res.data.list[1])
     state.firstCategoryList.push(res.data.list[6])

@@ -2,97 +2,26 @@
 	<div class='container'>
 		<section>
 			<div class="login-box">
-	            <!-- 登录框左侧 -->
-	            <div class="login-left">
-	                <a href="/" title="小鹿线" class="logo">
-	                    <img src="../assets/tom_logo.png" alt="小鹿线" title="小鹿线">
-	                </a>
-	                <div class="left-qrcode">
-	                    <div id="qrcode" title="小鹿线"><canvas width="180" height="180" style="display: none;"></canvas><img src="" style="display: block;"></div>
-	                    <div class="qrcode-text">扫码登录</div>
-	                </div>
-	                <div class="quick-login">快捷登录</div>
-	                <div class="qq-wx-wb">
-	                    <div class="wx-login">
-	                        <a href="/oauth/login/WECHAT_OPEN" title="微信登录"><i class="fa fa-weixin"></i></a>
-	                    </div>
-	                    <div class="qq-login">
-	                        <a href="/oauth/login/qq" title="QQ登录"><i class="fa fa-qq"></i></a>
-	                    </div>
-	                    <div class="weibo-login">
-	                        <a href="/oauth/login/weibo" title="微博登录"><i class="fa fa-weibo"></i></a>
-	                    </div>
-	                </div>
-	            </div>
 	            <!-- 登录框右侧 -->
 	            <div class="login-right">
-	                <div class="login-form">
-	                    <ul class="nav nav-tabs">
-	                        <li 
-	                        	v-for='item in loginTxt'
-	                        	:key='item.id'
-	                        	class="nav-items"
-	                        	:class='current==item.id?"actives":""'
-	                        	@click='loginChange(item.id)'
-	                        >
-	                            <a :class='current==item.id?"activess":""'>{{ item.text }}</a>
-	                        </li>
-	                    </ul>
-	                    <div class="tab-content">
-	                        <div class="tab-pane fade show active" v-if='current==1'>
 	                            <!-- 账号登录 -->
-	                            <div class="tab-main">
-	                            	<el-form
-									    ref="ruleFormRef"
-									    :model="ruleForm"
-									    :rules="rules"
-									>
-										<el-form-item class="login-user" prop="username">
-										   <el-icon><avatar /></el-icon>
-									       <el-input v-model="ruleForm.username" placeholder="请输入您的用户名"/>
-									    </el-form-item>
-									    <el-form-item class="login-password" prop="userpwd">
-										   <el-icon><lock /></el-icon>
-									       <el-input type='password' v-model="ruleForm.userpwd" placeholder="请输入您的密码"/>
-									    </el-form-item>
-									    <el-form-item class="login-submit">
-									      <el-button type="primary" @click='userBtn(ruleFormRef)'>登录</el-button>
-									    </el-form-item>
-									    <a class="forgetpwd">忘记密码？</a>
-	                                    <div class="login-text">
-	                                        登录即同意相关服务条款和隐私政策 <a >《小鹿线用户服务协议》</a><a>《小鹿线隐私政策》</a> 若您没有账号，系统将为您自动创建账号并登录。
-	                                    </div>
-                                    </el-form>
-	                            </div>
-	                        </div>
-	                        <div class="tab-pane fade" v-else>
-	                            <!-- 短信登录 -->
-	                            <div class="tab-main">
-	                            	<el-form
-                                        ref="ruleFormRefPhone"
-                                        :model="ruleFormPhone"
-                                        :rules="rulesPhone"
-                                    >
-										<el-form-item class="login-user" prop="phone">
-										   <el-icon><avatar /></el-icon>
-									       <el-input v-model='ruleFormPhone.phone' placeholder="请输入您的手机号"/>
-									    </el-form-item>
-
-									    <el-form-item class="login-Verification" prop="captcha">
-									       <el-input v-model='ruleFormPhone.captcha' placeholder="请输入您的验证码"/>
-									        <el-button @click='sendCode' class="btn btn-primary sendcaptcha" type="primary">{{ captcha }}</el-button>
-									    </el-form-item>
-	                                    <div class="login-submit">
-	                                    	<el-button @click='phoneBtn(ruleFormRefPhone)' class="btn btn-primary sendcaptcha" type="primary">登录</el-button>
-	                                    </div>
-	                                    <div class="login-text">
-	                                        登录即同意相关服务条款和隐私政策 <a>《小鹿线用户服务协议》</a><a>《小鹿线隐私政策》</a> 若您没有账号，系统将为您自动创建账号并登录。
-	                                    </div>
-	                                </el-form>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
+                            <el-form
+                              ref="ruleFormRef"
+                              :model="ruleForm"
+                              :rules="rules"
+                              >
+                                <el-form-item class="login-user" prop="username">
+                                  <el-icon color="red"><avatar /></el-icon>
+                                    <el-input v-model="ruleForm.username" placeholder="请输入您的用户名"/>
+                                  </el-form-item>
+                                  <el-form-item class="login-password" prop="userpwd">
+                                  <el-icon><lock /></el-icon>
+                                    <el-input type='password' v-model="ruleForm.userpwd" placeholder="请输入您的密码"/>
+                                  </el-form-item>
+                                  <el-form-item class="login-submit">
+                                    <el-button type="primary" @click='userBtn(ruleFormRef)' color="#626aef">登录</el-button>
+                                  </el-form-item>
+                                </el-form>
 	            </div>
 	        </div>
 		</section>
@@ -288,7 +217,9 @@ const phoneBtn = (formEl) => {
 	position: relative;
     width: 100vw;
     height: 100vh;
-    background: url(../assets/loginbg.jpeg) no-repeat center;
+    background: url(../assets/bg_snow.JPG) no-repeat center; 
+    background-size:100% 100%;
+    background-attachment:fixed;
 }
 section{
 	position: absolute;
@@ -296,20 +227,20 @@ section{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.3);
+    /* background: rgba(255, 255, 255, 0.3); */
     z-index: 10;
 }
 .login-box{
     position: absolute;
-    left: 50%;
+    left: 70%;
     top: 50%;
     transform: translate(-50%,-50%);
-    width: 950px;
+    width: 450px;
     height: 500px;
     border-radius: 8px;
     overflow: hidden;
     display: flex;
-    box-shadow: 0px 0px 5px #777;
+    /* box-shadow: 0px 0px 5px #777; */
 }
 .login-left{
     width: 475px;
@@ -318,11 +249,13 @@ section{
 }
 .login-right{
     position: relative;
-    width: 475px;
-    height: 500px;
-    background: url(../assets/ybbg.jpeg) no-repeat center center;
+    width: 350px;
+    height: 250px;
+    margin-top: 100px;
+    margin-left: 80px;
+    padding: 0 15px;
+    background: rgba(255, 255, 255, 0.2);
 }
-
 .nav-tabs {
     border-bottom: none;
 }
@@ -330,8 +263,9 @@ section{
     padding: 10px 40px;
     width: 350px;
     height: 440px;
-    background: #ffffff;
-    box-shadow: 0 0 8px #cccccc;
+    /* background: #ffffff; */
+    /* box-shadow: 0 0 8px #cccccc; */
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     position: absolute;
     left: 50%;
@@ -366,7 +300,7 @@ section{
     text-decoration: none;
 }
 .tab-main{
-    height: 360px;
+    /* height: 360px; */
     padding: 1px 0 0 0;
 }
 .login-user{
@@ -384,7 +318,7 @@ section{
     margin-left: 5px;
 }
 .login-user input{
-    width: calc(100% - 30px);
+    width: 80% !important;
     height: 35px;
     outline: none;
     color: #666666;
@@ -561,13 +495,17 @@ section{
 }
 :deep .el-form-item__content{
 	flex-wrap: nowrap;
+  
 }
 :deep .el-input__wrapper {
-  border: none !important;
+  /* border: none !important; */
+
+  background: transparent;
   box-shadow: none !important;
 }
 :deep .el-input__inner {
   border: none !important;
+  /* color: red !important; */
   box-shadow: none !important;
 }
 :deep .el-select {
@@ -575,5 +513,21 @@ section{
 }
 :deep .el-form-item__error{
 	top: 120%;
+}
+:deep .el-input {
+  width: 90%;
+  margin-left: 10px;
+}
+:deep .el-input__inner::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+.login-user svg{
+  color: rgba(255, 255, 255, 0.8)
+}
+.login-password svg{
+  color: rgba(255, 255, 255, 0.8)
+}
+:deep .el-input__inner{
+  color: rgba(255, 255, 255, 0.8)
 }
 </style>

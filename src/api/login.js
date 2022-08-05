@@ -26,3 +26,11 @@ export function loginByMobile( data ){
 		data
 	})
 }
+
+//获取个人信息
+export function getInfo( params ) {
+  return request({
+    url: 'api/member/getInfo',
+    params
+  })
+}
